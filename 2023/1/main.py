@@ -10,7 +10,17 @@ numbers = {
     "seven": 7,
     "eight": 8,
     "nine": 9,
-    "zero": 0,
+}
+
+joined = {
+    "oneight": "oneeight",
+    "threeight": "threeeight",
+    "fiveight": "fiveeight",
+    "sevenine": "sevennine",
+    "eightwo": "eighttwo",
+    "eighthree": "eightthree",
+    "nineight": "nineeight",
+    "twone": "twoone",
 }
 
 
@@ -19,6 +29,12 @@ def read_file(file_name):
         lines = f.readlines()
         lines = [line.strip() for line in lines]
     return lines
+
+
+def get_number(input: str) -> str:
+    if input.isnumeric():
+        return input
+    return str(numbers[input])
 
 
 def part_one():
@@ -31,50 +47,29 @@ def part_one():
     print(sum(number_in_lines))
 
 
-def get_number(input: str) -> str:
-    if input.isnumeric():
-        return input
-    return str(numbers[input])
-
-
 def part_two():
     lines = read_file("part_one.txt")
 
-    print(lines)
+    for joined_key, joined_value in joined.items():
+        lines = [line.replace(joined_key, joined_value) for line in lines]
+
+    print("aaa", lines)
     keys = list(numbers.keys())
     regex = r"\d|" + "|".join(keys)
     print(regex)
 
-    for line in lines:
-        r = re.finditer(regex, line)
-        print(r)
-
-        print("----")
-        for m in r:
-            print(m.group())
-        print("----")
-        rr = [m.group() for m in r]
-        print(rr)
-    matches = [re.finditer(regex, line) for line in lines]
-
-    print(matches)
-    numbers_in_lines = [
-        [match.group() for match in match_list] for match_list in matches
-    ]
-    print(numbers_in_lines)
+    numbers_in_lines = [re.findall(regex, line) for line in lines]
 
     n = [
         f"{get_number(number[0])}{get_number(number[-1])}"
         for number in numbers_in_lines
     ]
     n = [int(number) for number in n]
-    print(n)
-    # print(len(n))
-    # print(sum(n))
+    print(sum(n))
 
 
 if __name__ == "__main__":
-    # part_one()
+    part_one()
     part_two()
 
     print("Done!")
