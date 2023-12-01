@@ -37,17 +37,14 @@ def get_number(input: str) -> str:
     return str(numbers[input])
 
 
-def part_one():
+def part_one() -> int:
     lines = read_file("part_one.txt")
 
     number_in_lines = [re.findall(r"\d", line) for line in lines]
-    number_in_lines = [f"{number[0]}{number[-1]}" for number in number_in_lines]
-    number_in_lines = [int(number) for number in number_in_lines]
-
-    print(sum(number_in_lines))
+    return sum([int(f"{number[0]}{number[-1]}") for number in number_in_lines])
 
 
-def part_two():
+def part_two() -> int:
     lines = read_file("part_one.txt")
 
     for joined_key, joined_value in joined.items():
@@ -58,16 +55,16 @@ def part_two():
 
     numbers_in_lines = [re.findall(regex, line) for line in lines]
 
-    n = [
-        f"{get_number(number[0])}{get_number(number[-1])}"
-        for number in numbers_in_lines
-    ]
-    n = [int(number) for number in n]
-    print(sum(n))
+    return sum(
+        [
+            int(f"{get_number(number[0])}{get_number(number[-1])}")
+            for number in numbers_in_lines
+        ]
+    )
 
 
 if __name__ == "__main__":
-    part_one()
-    part_two()
+    print(f"part one {part_one()}")
+    print(f"part two {part_two()}")
 
     print("Done!")
