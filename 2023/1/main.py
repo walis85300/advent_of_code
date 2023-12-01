@@ -53,10 +53,8 @@ def part_two():
     for joined_key, joined_value in joined.items():
         lines = [line.replace(joined_key, joined_value) for line in lines]
 
-    print("aaa", lines)
     keys = list(numbers.keys())
     regex = r"\d|" + "|".join(keys)
-    print(regex)
 
     numbers_in_lines = [re.findall(regex, line) for line in lines]
 
