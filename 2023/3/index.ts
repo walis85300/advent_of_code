@@ -54,7 +54,6 @@ function partOne(m: string[][]): number {
       if (c === "." || /\d/.test(c)) {
         continue;
       }
-
       sum += checkAdjacent(m, i, j).reduce((a, b) => a + b, 0);
     }
   }
