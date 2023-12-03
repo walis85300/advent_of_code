@@ -1,9 +1,6 @@
 const path = import.meta.dir + "/input.txt";
-
 const file = Bun.file(path);
-
 const text = await file.text();
-
 const colors: Record<string, number> = {
   red: 12,
   green: 13,
@@ -33,4 +30,5 @@ const r = text
 
     return acc + Number(game);
   }, 0);
+
 console.log(r);
