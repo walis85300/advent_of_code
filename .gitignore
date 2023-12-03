@@ -2,3 +2,5 @@
 2023/1/part_one.txt
 2023/.DS_Store
 **/input.txt
+node_modules
+bun.lockb

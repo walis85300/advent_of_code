@@ -1,0 +1,10 @@
+{
+  "name": "advent_of_code",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
